@@ -1,3 +1,38 @@
 <clickhouse>
   <http_port>8080</http_port>
+  <query_log>
+    <database>system</database>
+    <table>query_log</table>
+    <partition_by>toYYYYMM(event_date)</partition_by>
+    <ttl>event_date + INTERVAL 7 DAY</ttl>  <!-- Keep 7 days -->
+    <flush_interval_milliseconds>7500</flush_interval_milliseconds>
+  </query_log>
+
+  <query_thread_log>
+    <database>system</database>
+    <table>query_thread_log</table>
+    <partition_by>toYYYYMM(event_date)</partition_by>
+    <ttl>event_date + INTERVAL 7 DAY</ttl>
+  </query_thread_log>
+
+  <trace_log>
+    <database>system</database>
+    <table>trace_log</table>
+    <partition_by>toYYYYMM(event_date)</partition_by>
+    <ttl>event_date + INTERVAL 3 DAY</ttl>  <!-- Keep 3 days -->
+  </trace_log>
+
+  <text_log>
+    <database>system</database>
+    <table>text_log</table>
+    <partition_by>toYYYYMM(event_date)</partition_by>
+    <ttl>event_date + INTERVAL 3 DAY</ttl>
+  </text_log>
+
+  <metric_log>
+    <database>system</database>
+    <table>metric_log</table>
+    <partition_by>toYYYYMM(event_date)</partition_by>
+    <ttl>event_date + INTERVAL 3 DAY</ttl>
+  </metric_log>
 </clickhouse>
