@@ -1,5 +1,8 @@
 <clickhouse>
   <http_port>8080</http_port>
+  <logger>
+    <level>notice</level>
+  </logger>
   <query_log>
     <database>system</database>
     <table>query_log</table>
